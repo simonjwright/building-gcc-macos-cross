@@ -1,4 +1,4 @@
-../../../gcc-5.1.0/configure               \
+../../../gcc-4.9.1/configure               \
  --build=x86_64-apple-darwin13                  \
  --target=arm-eabi                              \
  --prefix=$HOME/local-arm                       \
