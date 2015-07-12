@@ -4,17 +4,15 @@
  --build=x86_64-apple-darwin13                  \
  --target=arm-eabi                              \
  --prefix=$HOME/local-arm                       \
- --with-cpu=cortex-m4                           \
- --with-fpu=fpv4-sp-d16                         \
- --with-float=hard                              \
+ --with-arch=armv7                              \
  --with-mode=thumb                              \
- --enable-interwork                             \
+ --disable-interwork                            \
  --enable-multilib                              \
  --with-gnu-as                                  \
  --with-gnu-ld                                  \
  --disable-nls                                  \
  --disable-newlib-supplied-syscalls
 
-make -j4 all
+make -w -j4 all
 
-make install
+make -w install

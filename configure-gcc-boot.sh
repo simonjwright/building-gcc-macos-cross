@@ -1,28 +1,30 @@
-../../../gcc-5.1.0/configure               \
- --build=x86_64-apple-darwin13                  \
- --target=arm-eabi                              \
- --prefix=$HOME/local-arm                       \
- --with-cpu=cortex-m4                           \
- --with-fpu=fpv4-sp-d16                         \
- --with-float=hard                              \
- --with-mode=thumb                              \
- --enable-interwork                             \
- --enable-multilib                              \
- --enable-languages="c"                         \
- --with-system-zlib                             \
- --with-newlib                                  \
- --with-libgloss                                \
- --without-headers                              \
- --disable-shared                               \
- --disable-nls                                  \
- --with-gnu-as                                  \
- --with-gnu-ld                                  \
- --with-stage1-libs=no                          \
- --with-stage1-ldflags=no                       \
- --with-boot-libs=no                            \
- --with-boot-ldflags=no                         \
- --with-bugurl=URL:mailto:simon@pushface.org
+../../../gcc-5.1.0/configure                            \
+ --build=x86_64-apple-darwin13                          \
+ --disable-libada                                       \
+ --disable-libcc1                                       \
+ --disable-libcilkrts                                   \
+ --disable-libmudflap                                   \
+ --disable-libsanitizer                                 \
+ --disable-libssp                                       \
+ --disable-nls                                          \
+ --disable-shared                                       \
+ --disable-lto                                          \
+ --enable-languages="c"                                 \
+ --enable-multilib                                      \
+ --prefix=$HOME/local-arm                               \
+ --target=arm-eabi                                      \
+ --with-arch=armv7                                      \
+ --with-mode=thumb                                      \
+ --with-bugurl=URL:mailto:simon@pushface.org            \
+ --with-gnu-as                                          \
+ --with-gnu-ld                                          \
+ --with-libgloss                                        \
+ --with-newlib                                          \
+ --with-stage1-ldflags=-Wl,-headerpad_max_install_names \
+ --with-system-zlib                                     \
+ --without-headers                                      \
+ --without-libiconv-prefix
 
-make -j4 all-gcc
+make -w -j2 all-gcc
 
-make install-gcc
+make -w install-gcc
