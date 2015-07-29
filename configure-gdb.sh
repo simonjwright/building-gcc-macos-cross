@@ -3,11 +3,11 @@
  --target=arm-eabi                              \
  --prefix=/usr/local/gnat                       \
  --with-arch=armv7                              \
- --enable-interwork                             \
+ --with-mode=thumb                              \
  --enable-multilib                              \
  --disable-werror
 
 make all -j4
 
 cd gdb
-make install $HOME/local-arm
+make install prefix=$HOME/local-arm

@@ -5,7 +5,7 @@
  --target=arm-eabi                              \
  --prefix=/usr/local/gnat                       \
  --with-arch=armv7                              \
- --enable-interwork                             \
+ --with-mode=thumb                              \
  --enable-multilib                              \
  --with-gnu-as                                  \
  --with-gnu-ld                                  \
@@ -17,8 +17,3 @@ make -j4 all
 make install prefix=$HOME/local-arm
 
 exit
-
- --with-cpu=cortex-m4                           \
- --with-fpu=fpv4-sp-d16                         \
- --with-float=hard                              \
- --with-mode=thumb                              \

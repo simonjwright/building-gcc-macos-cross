@@ -14,7 +14,7 @@
  --prefix=/usr/local/gnat                               \
  --target=arm-eabi                                      \
  --with-arch=armv7                                      \
- --with-boot-ldflags=no                                 \
+ --with-mode=thumb                                      \
  --with-bugurl=URL:mailto:simon@pushface.org            \
  --with-gnu-as                                          \
  --with-gnu-ld                                          \

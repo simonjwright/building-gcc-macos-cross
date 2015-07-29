@@ -4,6 +4,7 @@
  --prefix=/usr/local/gnat                       \
  --enable-multilib                              \
  --with-arch=armv7                              \
+ --with-mode=thumb                              \
  --with-gnu-as                                  \
  --with-gnu-ld                                  \
  --disable-nls                                  \
@@ -14,9 +15,3 @@ make
 make install prefix=$HOME/local-arm
 
 exit
-
- --with-cpu=cortex-m4                           \
- --with-fpu=fpv4-sp-d16                         \
- --with-float=hard                              \
- --with-mode=thumb                              \
- --enable-interwork                             \
