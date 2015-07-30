@@ -13,7 +13,7 @@
  --enable-multilib                                      \
  --prefix=/usr/local/gnat                               \
  --target=arm-eabi                                      \
- --with-arch=armv7                                      \
+ --with-arch=armv7-m                                    \
  --with-mode=thumb                                      \
  --with-bugurl=URL:mailto:simon@pushface.org            \
  --with-gnu-as                                          \
@@ -25,6 +25,6 @@
  --without-headers                                      \
  --without-libiconv-prefix
 
-make -j4 all-gcc
+make -j3 all-gcc
 
 make install-gcc prefix=$HOME/local-arm

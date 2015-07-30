@@ -3,8 +3,7 @@
  --target=arm-eabi                              \
  --prefix=/usr/local/gnat                       \
  --enable-multilib                              \
- --with-arch=armv7                              \
- --with-mode=thumb                              \
+ --with-arch=armv7-m                            \
  --with-gnu-as                                  \
  --with-gnu-ld                                  \
  --disable-nls                                  \
