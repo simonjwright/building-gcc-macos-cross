@@ -3,12 +3,13 @@
  --target=arm-eabi                              \
  --prefix=$HOME/local-arm                       \
  --enable-multilib                              \
- --with-arch=armv7                              \
+ --with-arch=armv7-m                            \
+ --with-mode=thumb                              \
  --with-gnu-as                                  \
  --with-gnu-ld                                  \
  --disable-nls                                  \
  --disable-werror
 
-make
+make -w -j2
 
 make install

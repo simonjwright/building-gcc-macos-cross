@@ -2,7 +2,8 @@
  --build=x86_64-apple-darwin13                  \
  --target=arm-eabi                              \
  --prefix=$HOME/local-arm                       \
- --with-arch=armv7                              \
+ --with-arch=armv7-m                            \
+ --with-mode=thumb                              \
  --disable-werror
 
 make -w all -j2

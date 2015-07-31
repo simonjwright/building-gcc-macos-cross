@@ -1,10 +1,8 @@
-#I've applied the newlib-2.1.0 patch from https://github.com/istarc/stm32.git
-
-../../newlib-2.1.0/configure                    \
+../../newlib-2.2.0/configure                    \
  --build=x86_64-apple-darwin13                  \
  --target=arm-eabi                              \
  --prefix=$HOME/local-arm                       \
- --with-arch=armv7                              \
+ --with-arch=armv7-m                            \
  --with-mode=thumb                              \
  --disable-interwork                            \
  --enable-multilib                              \
@@ -13,6 +11,6 @@
  --disable-nls                                  \
  --disable-newlib-supplied-syscalls
 
-make -w -j4 all
+make -w -j2 all
 
 make -w install
