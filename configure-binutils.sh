@@ -3,7 +3,7 @@
  --target=arm-eabi                              \
  --prefix=$HOME/local-arm                       \
  --enable-multilib                              \
- --with-arch=armv7-m                            \
+ --with-arch=armv7                              \
  --with-mode=thumb                              \
  --with-gnu-as                                  \
  --with-gnu-ld                                  \

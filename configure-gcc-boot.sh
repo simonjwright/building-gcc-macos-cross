@@ -13,7 +13,7 @@
  --enable-multilib                                      \
  --prefix=$HOME/local-arm                               \
  --target=arm-eabi                                      \
- --with-arch=armv7-m                                    \
+ --with-arch=armv7                                      \
  --with-mode=thumb                                      \
  --with-bugurl=URL:mailto:simon@pushface.org            \
  --with-gnu-as                                          \
