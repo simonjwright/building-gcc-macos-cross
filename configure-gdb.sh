@@ -2,7 +2,7 @@
  --build=x86_64-apple-darwin13                  \
  --target=arm-eabi                              \
  --prefix=/usr/local/gnat                       \
- --with-arch=armv7-m                            \
+ --with-arch=armv7                              \
  --with-mode=thumb                              \
  --enable-multilib                              \
  --disable-werror
