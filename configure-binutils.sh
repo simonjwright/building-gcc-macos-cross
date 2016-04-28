@@ -1,14 +1,14 @@
-../../binutils-2.24/configure                   \
- --build=x86_64-apple-darwin13                  \
+script_loc=`cd $(dirname $0) && pwd -P`
+
+. $script_loc/common.sh
+
+$BINUTILS_PATH/configure                        \
+ --build=x86_64-apple-darwin15                  \
  --target=arm-eabi                              \
- --prefix=$HOME/local-arm                       \
- --enable-multilib                              \
- --with-arch=armv7                              \
- --with-mode=thumb                              \
- --with-gnu-as                                  \
- --with-gnu-ld                                  \
+ --prefix=$PREFIX                               \
  --disable-nls                                  \
- --disable-werror
+ --disable-werror                               \
+ --enable-interwork
 
 make -w -j2
 
