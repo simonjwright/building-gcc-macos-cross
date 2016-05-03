@@ -9,7 +9,7 @@ PREFIX=$HOME/local-arm
 
 SRC_PATH=$HOME/tmp/gcc-arm-none-eabi-5_2-2015q4-20151219/src
 BINUTILS_PATH=$SRC_PATH/binutils
-GCC_PATH=$HOME/tmp/gcc-6.0.1-RC-20160415
+GCC_PATH=$HOME/tmp/gcc-6.1.0
 NEWLIB_PATH=$SRC_PATH/newlib
 GDB_PATH=$SRC_PATH/gdb
 
