@@ -13,4 +13,4 @@ GCC_PATH=$HOME/tmp/gcc-6.1.0
 NEWLIB_PATH=$SRC_PATH/newlib
 GDB_PATH=$SRC_PATH/gdb
 
-MULTILIB_LIST="--with-multilib-list=aprofile"
+MULTILIB_LIST="--with-arch=armv7 --with-mode=thumb"
