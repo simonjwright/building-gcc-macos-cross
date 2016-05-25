@@ -1,0 +1,25 @@
+diff --git a/gcc/ada/gcc-interface/Makefile.in b/gcc/ada/gcc-interface/Makefile.in
+--- a/gcc/ada/gcc-interface/Makefile.in
++++ b/gcc/ada/gcc-interface/Makefile.in
+@@ -194,7 +194,9 @@
+ # Link flags used to build gnat tools.  By default we prefer to statically
+ # link with libgcc to avoid a dependency on shared libgcc (which is tricky
+ # to deal with as it may conflict with the libgcc provided by the system).
+-GCC_LINK_FLAGS=-static-libstdc++ -static-libgcc
++ifneq ($(strip $(filter-out darwin%,$(host_os))),)
++  GCC_LINK_FLAGS=-static-libstdc++ -static-libgcc
++endif
+ 
+ # End of variables for you to override.
+ 
+@@ -2414,7 +2416,9 @@
+   GMEM_LIB = gmemlib
+   LIBRARY_VERSION := $(LIB_VERSION)
+   soext = .dylib
+-  GCC_LINK_FLAGS=-static-libstdc++
++  ifneq ($(strip $(filter-out darwin%,$(host_os))),)
++    GCC_LINK_FLAGS=-static-libstdc++
++  endif
+ endif
+ 
+ ifeq ($(EH_MECHANISM),-gcc)

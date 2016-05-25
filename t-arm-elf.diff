@@ -1,0 +1,12 @@
+diff --git a/gcc/config/arm/t-arm-elf b/gcc/config/arm/t-arm-elf
+--- a/gcc/config/arm/t-arm-elf
++++ b/gcc/config/arm/t-arm-elf
+@@ -40,7 +40,7 @@
+ # (mcrr etc).
+ MULTILIB_OPTIONS       += mfloat-abi=hard
+ MULTILIB_DIRNAMES      += fpu
+-MULTILIB_EXCEPTIONS    += *mthumb/*mfloat-abi=hard*
++#MULTILIB_EXCEPTIONS    += *mthumb/*mfloat-abi=hard*
+ #MULTILIB_EXCEPTIONS    += *mcpu=fa526/*mfloat-abi=hard*
+ #MULTILIB_EXCEPTIONS    += *mcpu=fa626/*mfloat-abi=hard*
+ 
