@@ -1,16 +1,17 @@
-../../binutils-2.24/configure                   \
- --build=x86_64-apple-darwin13                  \
+script_loc=`cd $(dirname $0) && pwd -P`
+
+. $script_loc/common.sh
+
+$BINUTILS_PATH/configure                        \
+ --build=$BUILD                                 \
  --target=arm-eabi                              \
- --prefix=/usr/local/gnat                       \
- --enable-multilib                              \
- --with-arch=armv7                              \
- --with-gnu-as                                  \
- --with-gnu-ld                                  \
+ --prefix=$PREFIX                               \
  --disable-nls                                  \
- --disable-werror
+ --disable-werror                               \
+ --enable-interwork
 
-make
+make -w -j2
 
-make install prefix=$HOME/local-arm
+make -w install
 
 exit

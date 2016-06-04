@@ -1,13 +1,14 @@
-../../../gdb-7.9-gpl-2015-src/configure         \
- --build=x86_64-apple-darwin13                  \
+script_loc=`cd $(dirname $0) && pwd -P`
+
+. $script_loc/common.sh
+
+$GDB_PATH/configure                             \
+ --build=$BUILD                                 \
  --target=arm-eabi                              \
- --prefix=/usr/local/gnat                       \
- --with-arch=armv7                              \
- --with-mode=thumb                              \
- --enable-multilib                              \
+ --prefix=$PREFIX                               \
  --disable-werror
 
 make all -j4
 
 cd gdb
-make install prefix=$HOME/local-arm
+make install

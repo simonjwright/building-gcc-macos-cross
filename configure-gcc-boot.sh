@@ -1,5 +1,9 @@
-../../../gcc-4.9-gpl-2015-src/configure                 \
- --build=x86_64-apple-darwin13                          \
+script_loc=`cd $(dirname $0) && pwd -P`
+
+. $script_loc/common.sh
+
+$GCC_PATH/configure                                     \
+ --build=$BUILD                                         \
  --disable-libada                                       \
  --disable-libcc1                                       \
  --disable-libcilkrts                                   \
@@ -11,7 +15,7 @@
  --disable-lto                                          \
  --enable-languages="c"                                 \
  --enable-multilib                                      \
- --prefix=/usr/local/gnat                               \
+ --prefix=$PREFIX                                       \
  --target=arm-eabi                                      \
  --with-arch=armv7                                      \
  --with-mode=thumb                                      \
@@ -23,8 +27,13 @@
  --with-stage1-ldflags=-Wl,-headerpad_max_install_names \
  --with-system-zlib                                     \
  --without-headers                                      \
- --without-libiconv-prefix
+ --without-libiconv-prefix                              \
+ $MULTILIB_LIST
 
-make -j3 all-gcc
+make -w -j2
+
+make -w all-gcc
+
+make -w install
 
 make install-gcc prefix=$HOME/local-arm

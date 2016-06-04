@@ -1,17 +1,18 @@
-../../newlib-2.2.0/configure                    \
- --build=x86_64-apple-darwin13                  \
+script_loc=`cd $(dirname $0) && pwd -P`
+
+. $script_loc/common.sh
+
+PATH=$PREFIX/bin:$PATH
+
+$NEWLIB_PATH/configure                          \
+ --build=$BUILD                                 \
  --target=arm-eabi                              \
- --prefix=/usr/local/gnat                       \
- --with-arch=armv7                              \
- --with-mode=thumb                              \
- --enable-multilib                              \
- --with-gnu-as                                  \
- --with-gnu-ld                                  \
+ --prefix=$PREFIX                               \
+ --enable-newlib-io-long-long                   \
+ --enable-newlib-register-fini                  \
  --disable-nls                                  \
  --disable-newlib-supplied-syscalls
 
-make -j3 all
+make CFLAGS_FOR_TARGET='-g -O2 -ffunction-sections -fdata-sections' -w -j2 all
 
-make install prefix=$HOME/local-arm
-
-exit
+make -w install
