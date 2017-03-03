@@ -17,8 +17,6 @@ $GCC_PATH/configure                                     \
  --enable-multilib                                      \
  --prefix=$PREFIX                                       \
  --target=arm-eabi                                      \
- --with-arch=armv7                                      \
- --with-mode=thumb                                      \
  --with-bugurl=URL:mailto:simon@pushface.org            \
  --with-gnu-as                                          \
  --with-gnu-ld                                          \

@@ -16,4 +16,4 @@ GCC_PATH=$GNAT_PATH/gcc-4.9-gpl-2016-src
 NEWLIB_PATH=$ARM_EMBEDDED_PATH/newlib
 GDB_PATH=$GNAT_PATH/gdb-7.10-gpl-2016-src
 
-MULTILIB_LIST="--with-arch=armv7 --with-mode=thumb"
+MULTILIB_LIST="--with-arch=armv7"

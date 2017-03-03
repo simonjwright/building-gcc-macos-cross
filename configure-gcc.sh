@@ -17,8 +17,6 @@ $GCC_PATH/configure                                     \
  --enable-multilib                                      \
  --prefix=$PREFIX                                       \
  --target=arm-eabi                                      \
- --with-arch=armv7                                      \
- --with-mode=thumb                                      \
  --with-bugurl=URL:mailto:simon@pushface.org            \
  --with-gnu-as                                          \
  --with-gnu-ld                                          \
@@ -36,23 +34,3 @@ make -w -C gcc cross-gnattools ada.all.cross
 make -w install
 
 exit
-
-This is the configuration setup for the Linux arm-eabi version
-(sorted, for convenience).
-
-../src/configure \
---build=i686-pc-linux-gnu
---disable-libada \
---disable-libssp \
---disable-libstdcxx-pch \
---disable-nls \
---enable-checking=release \
---enable-languages=ada,c \
---enable-multilib \
---prefix=/beuvry.a/gnatmail/sandbox/gpl-2016/arm-elf-linux/gcc/pkg \
---target=arm-eabi \
---with-arch=armv7 \
---with-bugurl=URL:mailto:report@adacore.com \
---with-gnu-as \
---with-gnu-ld \
---without-libiconv-prefix \
