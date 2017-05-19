@@ -5,7 +5,7 @@ script_loc=`cd $(dirname $0) && pwd -P`
 PATH=$PREFIX/bin:$PATH
 
 $NEWLIB_PATH/configure                          \
- --build=x86_64-apple-darwin15                  \
+ --build=$BUILD                                 \
  --target=arm-eabi                              \
  --prefix=$PREFIX                               \
  --enable-newlib-io-long-long                   \
@@ -13,6 +13,6 @@ $NEWLIB_PATH/configure                          \
  --disable-nls                                  \
  --disable-newlib-supplied-syscalls
 
-make CFLAGS_FOR_TARGET='-g -O2 -ffunction-sections -fdata-sections' -w -j2 all
+make CFLAGS_FOR_TARGET='-g -O2 -ffunction-sections -fdata-sections' -w -j3 all
 
 make -w install

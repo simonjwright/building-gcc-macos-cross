@@ -1,65 +1,53 @@
-This set of scripts supports building GCC Ada, or GNAT, on OS X as a
+This set of scripts supports building GCC Ada, or GNAT, on macOS as a
 cross-compiler for the arm-eabi target. It has been put together from
 various hints around the Web, and from painful experience.
 
-The OS X-specific parts are:
+The macOS-specific parts are:
 
-* the --build=x86_64-apple-darwinNN switch
+* in common.sh, BUILD=x86_64-apple-darwinNN
 
-* the --with-stage1-ldflags= switch, used to ensure that the
-  executables can be relocated.
+* in configure-gcc.sh, the --with-stage1-ldflags= switch, used to
+  ensure that the executables can be relocated.
 
 The first prerequisite is to have a native Ada compiler, and its
-source code, for the GCC release you are building the cross-compiler
-for.
+suitably-patched source code, for the GCC release you are building the
+cross-compiler for.
 
 Next, you need the following sources (for the ones marked [G], the
-GNAT GPL sources contain appropriate versions):
+GNAT GPL sources contain appropriate versions for a GNAT GPL build;
+for an FSF GCC build, you should already have appropriate versions of
+the ones marked C via contrib/download_prerequisites):
 
-* [G] the GNU Multiprecision library (gmp); I've been using version
-  5.1.3.
+* [C, G] the GNU Multiprecision library (gmp).
 
-* [G] the GNU Multiple Precision Floating Point library (mpfr): I've
-  been using version 3.1.2.
+* [C, G] the GNU Multiple Precision Floating Point library (mpfr).
 
-* [G] the GNU multiple precision complex number library (mpc): I've
-  been using version 1.0.2.
+* [C, G] the GNU multiple precision complex number library (mpc).
 
-* the patch gcc-6.1.0.diff (probably not if you're not building for OS
-  X).
+* the GNU binary utilities (binutils): I've used the version found in
+  the ARM Embedded Launchpad 2017q1 release, 2.27.90.20170215.
 
-* the patch t-arm-elf.diff (probably not if you're building GNAT
-  GPL; certainly not if you're building from an ARM Embedded Launchpad
-  release).
+* the embedded C library newlib: I've used the version found in the
+  ARM Embedded Launchpad 2017q1 release (2.5.0, possibly with updates).
 
-* the GNU binary utilities (binutils): I've been using version 2.24
-  (and, lately, the 2.25.90.20151217 version found in the ARM Embedded
-  Launchpad 2015q4 release).
+* [G] the GNU debugger: the version found in the ARM Embedded
+  Launchpad 2017q1 release (7.12.1, possibly with updates) crashed on
+  startup; I've used the version provided with GNAT GPL 2016, 7.10
+  with updates).
 
-* the embedded C library newlib: I've been using version 2.2.0, and
-  lately the version found in the ARM Embedded Launchpad 2015q4
-  release, whose headers also say 2.2.0 but which may contain updates.
-
-* [G] the GNU debugger: I've used the version supplied as part of GNAT
-  GPL 2015 (7.9) and the version found in the ARM Embedded Launchpad
-  2015q4 release (7.10, possibly with updates).
-
-These directions are written for OS X, using the default branch of the
-building-arm-eabi Mercurial repository (which is set up for the latest
-FSF GCC release), assumed hereafter to be in directory $BUILD.
+These directions are written for macOS, using the default branch of
+the building-arm-eabi Mercurial repository (which is set up for the
+latest FSF GCC release), assumed hereafter to be in directory $build.
 
 (1) Unpack all the sources.
 
-(2) In $BUILD, edit common.sh to reflect the locations. If
+(2) In $build, edit common.sh to reflect the locations. If
 you are happy to install over your native compiler, adjust PREFIX to
 suit (but that may require you to build with root privileges, not
 normally a good idea).
 
-(3) Apply the patches gcc-6.1.0.diff and t-arm-elf.diff (as required)
-to the GCC source tree (use "patch -p1" from the top-level directory).
-
-(4) Still at the top level of the GCC source directory, insert
-symbolic links to the support libraries:
+(4) Still at the top level of the GCC source directory, and if not
+already done, insert symbolic links to the support libraries:
 
    ln -s /where/ever/gmp-l.m.n gmp
    ln -s /where/ever/mpfr-l.m.n mpfr
@@ -70,9 +58,9 @@ symbolic links to the support libraries:
 (6) Create a build directory, e.g. ~/tmp/build-arm, and subdirectories
 binutils/, gcc-boot/, newlib/, gcc/ and gdb/.
 
-(7) In binutils/, call $BUILD/configure-binutils.sh.
+(7) In binutils/, call $build/configure-binutils.sh.
 
-(8) in gcc-boot/, call $BUILD/configure-gcc-boot.sh. This builds a C
+(8) in gcc-boot/, call $build/configure-gcc-boot.sh. This builds a C
 compiler capable of building newlib.
 
 (9) if using a version of build-arm-eabi earlier than changeset
@@ -80,11 +68,11 @@ compiler capable of building newlib.
 directory comes first, so that the new binutils will be used to build
 newlib. If using newer versions, this is done in the scripts.
 
-(10) in newlib/, call $BUILD/configure-newlib.sh.
+(10) in newlib/, call $build/configure-newlib.sh.
 
-(11) in gcc/, call $BUILD/configure-gcc.sh (it's best not to do this
+(11) in gcc/, call $build/configure-gcc.sh (it's best not to do this
 in the gcc-boot/ directory, at least if you don't wipe it first).
 
-(12) in gdb/, call $BUILD/configure-gdb.sh.
+(12) in gdb/, call $build/configure-gdb.sh.
 
 The new compiler is now installed in $prefix.

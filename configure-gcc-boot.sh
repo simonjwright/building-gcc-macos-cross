@@ -3,7 +3,7 @@ script_loc=`cd $(dirname $0) && pwd -P`
 . $script_loc/common.sh
 
 $GCC_PATH/configure                             \
- --build=x86_64-apple-darwin15                  \
+ --build=$BUILD                                 \
  --disable-decimal-float                        \
  --disable-libada                               \
  --disable-libcc1                               \
@@ -33,6 +33,6 @@ $GCC_PATH/configure                             \
  --without-libiconv-prefix                      \
  $MULTILIB_LIST
 
-make -w -j2 all-gcc
+make -w -j3 all-gcc
 
 make -w install-gcc

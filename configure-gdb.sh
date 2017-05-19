@@ -2,13 +2,15 @@ script_loc=`cd $(dirname $0) && pwd -P`
 
 . $script_loc/common.sh
 
+PATH=$PREFIX/bin:$PATH
+
 $GDB_PATH/configure                             \
- --build=x86_64-apple-darwin15                  \
+ --build=$BUILD                                 \
  --target=arm-eabi                              \
- --prefix=$HOME/local-arm                       \
+ --prefix=$PREFIX                               \
  --disable-werror
 
-make -w all -j2
+make -w all -j3
 
 cd gdb
 make install
