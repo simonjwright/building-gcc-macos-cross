@@ -2,36 +2,37 @@ script_loc=`cd $(dirname $0) && pwd -P`
 
 . $script_loc/common.sh
 
-$GCC_PATH/configure                                     \
- --build=$BUILD                                         \
- --disable-libada                                       \
- --disable-libcc1                                       \
- --disable-libcilkrts                                   \
- --disable-libmudflap                                   \
- --disable-libsanitizer                                 \
- --disable-libssp                                       \
- --disable-nls                                          \
- --disable-shared                                       \
- --disable-lto                                          \
- --enable-languages="c"                                 \
- --enable-multilib                                      \
- --prefix=$PREFIX                                       \
- --target=arm-eabi                                      \
- --with-bugurl=URL:mailto:simon@pushface.org            \
- --with-gnu-as                                          \
- --with-gnu-ld                                          \
- --with-libgloss                                        \
- --with-newlib                                          \
- --with-stage1-ldflags=-Wl,-headerpad_max_install_names \
- --with-system-zlib                                     \
- --without-headers                                      \
- --without-libiconv-prefix                              \
+$GCC_PATH/configure                             \
+ --build=$BUILD                                 \
+ --disable-decimal-float                        \
+ --disable-libada                               \
+ --disable-libcc1                               \
+ --disable-libcilkrts                           \
+ --disable-libffi                               \
+ --disable-libgomp                              \
+ --disable-libmudflap                           \
+ --disable-libquadmath                          \
+ --disable-libsanitizer                         \
+ --disable-libssp                               \
+ --disable-libstdcxx-pch                        \
+ --disable-lto                                  \
+ --disable-nls                                  \
+ --disable-nls                                  \
+ --disable-shared                               \
+ --disable-threads                              \
+ --disable-tls                                  \
+ --enable-languages="c"                         \
+ --prefix=$PREFIX                               \
+ --target=arm-eabi                              \
+ --with-gnu-as                                  \
+ --with-gnu-ld                                  \
+ --with-newlib                                  \
+ --with-stage1-ldflags="$GCC_STAGE1_FLAGS"	\
+ --with-system-zlib                             \
+ --without-headers                              \
+ --without-libiconv-prefix                      \
  $MULTILIB_LIST
 
-make -w -j2
+make -w -j3 all-gcc
 
-make -w all-gcc
-
-make -w install
-
-make install-gcc prefix=$HOME/local-arm
+make -w install-gcc

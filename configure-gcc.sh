@@ -20,16 +20,15 @@ $GCC_PATH/configure                                     \
  --with-bugurl=URL:mailto:simon@pushface.org            \
  --with-gnu-as                                          \
  --with-gnu-ld                                          \
- --with-libgloss                                        \
  --with-newlib                                          \
- --with-stage1-ldflags=-Wl,-headerpad_max_install_names \
+ --with-stage1-ldflags="$GCC_STAGE1_FLAGS"		\
  --with-system-zlib                                     \
  --without-libiconv-prefix                              \
  $MULTILIB_LIST
 
-make -w -j2
+make -w -j3
 
-make -w -C gcc cross-gnattools ada.all.cross
+make -w -j3 -C gcc cross-gnattools ada.all.cross
 
 make -w install
 

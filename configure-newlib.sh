@@ -13,6 +13,12 @@ $NEWLIB_PATH/configure                          \
  --disable-nls                                  \
  --disable-newlib-supplied-syscalls
 
-make CFLAGS_FOR_TARGET='-g -O2 -ffunction-sections -fdata-sections' -w -j2 all
+# Building for GNAT GPL 2017, GCC 6.3.1, we get armv6 capability but
+# for some reason building libgloss fails. So we just need
+# target-newlib.
 
-make -w install
+make -w -j3 \
+    CFLAGS_FOR_TARGET='-g -O2 -ffunction-sections -fdata-sections' \
+    all-target-newlib
+
+make -w install-target-newlib

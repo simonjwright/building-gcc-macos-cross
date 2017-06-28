@@ -10,7 +10,7 @@ $BINUTILS_PATH/configure                        \
  --disable-werror                               \
  --enable-interwork
 
-make -w -j2
+make -w -j3
 
 make -w install
 
