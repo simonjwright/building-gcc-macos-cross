@@ -19,14 +19,14 @@ $GCC_PATH/configure                                     \
  --disable-shared                                       \
  --disable-threads                                      \
  --disable-tls                                          \
- --enable-languages="c,c++,ada"                         \
+ --enable-languages="c,ada"                             \
  --prefix=$PREFIX                                       \
  --target=arm-eabi                                      \
  --with-gnu-as                                          \
  --with-gnu-ld                                          \
  --with-libgloss                                        \
  --with-newlib                                          \
- --with-stage1-ldflags=-Wl,-headerpad_max_install_names \
+ --with-stage1-ldflags="$GCC_STAGE1_FLAGS"              \
  --with-system-zlib                                     \
  --without-libiconv-prefix                              \
  $MULTILIB_LIST
