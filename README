@@ -4,10 +4,7 @@ various hints around the Web, and from painful experience.
 
 The macOS-specific parts are:
 
-* in common.sh, BUILD=x86_64-apple-darwinNN
-
-* in configure-gcc.sh, the --with-stage1-ldflags= switch, used to
-  ensure that the executables can be relocated.
+* in common.sh, BUILD=x86_64-apple-darwinNN and GCC_STAGE1_FLAGS
 
 The first prerequisite is to have a native Ada compiler, and its
 suitably-patched source code, for the GCC release you are building the
@@ -24,16 +21,11 @@ the ones marked C via contrib/download_prerequisites):
 
 * [C, G] the GNU multiple precision complex number library (mpc).
 
-* the GNU binary utilities (binutils): I've used the version found in
-  the ARM Embedded Launchpad 2017q1 release, 2.27.90.20170215.
+* the GNU binary utilities (binutils).
 
-* the embedded C library newlib: I've used the version found in the
-  ARM Embedded Launchpad 2017q1 release (2.5.0, possibly with updates).
+* the embedded C library newlib.
 
-* [G] the GNU debugger: the version found in the ARM Embedded
-  Launchpad 2017q1 release (7.12.1, possibly with updates) crashed on
-  startup; I've used the version provided with GNAT GPL 2016, 7.10
-  with updates).
+* [G] the GNU debugger.
 
 These directions are written for macOS, using the default branch of
 the building-arm-eabi Mercurial repository (which is set up for the
