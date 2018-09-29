@@ -19,7 +19,7 @@ $GCC_PATH/configure                                     \
  --disable-shared                                       \
  --disable-threads                                      \
  --disable-tls                                          \
- --enable-languages="c,ada"                             \
+ --enable-languages="c,c++,ada"                         \
  --prefix=$PREFIX                                       \
  --target=arm-eabi                                      \
  --with-gnu-as                                          \

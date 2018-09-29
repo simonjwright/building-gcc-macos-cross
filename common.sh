@@ -6,9 +6,9 @@
 # source tree already had these versions installed via
 # contrib/download_prerequisites.
 
-PATH=/Volumes/Miscellaneous/tmp/opt/gcc-8.0.0/bin:$PATH
+PATH=/Volumes/Miscellaneous/tmp/opt/gcc-8.1.0/bin:$PATH
 TOP=/Volumes/Miscellaneous
-PREFIX=$TOP/arm/gcc-8.0.0
+PREFIX=$TOP/arm/gcc-8.1.0
 BUILD=x86_64-apple-darwin15
 
 SRC_PATH=$TOP/tmp

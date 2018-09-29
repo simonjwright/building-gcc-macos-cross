@@ -28,7 +28,7 @@ the ones marked C via contrib/download_prerequisites):
 * [G] the GNU debugger.
 
 These directions are written for macOS, using the default branch of
-the building-arm-eabi Mercurial repository (which is set up for the
+the building-arm-eabi Github repository (which is set up for the
 latest FSF GCC release), assumed hereafter to be in directory $build.
 
 (1) Unpack all the sources.
@@ -50,21 +50,21 @@ already done, insert symbolic links to the support libraries:
 (6) Create a build directory, e.g. ~/tmp/build-arm, and subdirectories
 binutils/, gcc-boot/, newlib/, gcc/ and gdb/.
 
-(7) In binutils/, call $build/configure-binutils.sh.
+(7) In binutils/, call $build/binutils.sh.
 
-(8) in gcc-boot/, call $build/configure-gcc-boot.sh. This builds a C
+(8) in gcc-boot/, call $build/gcc-boot.sh. This builds a C
 compiler capable of building newlib.
 
-(9) if using a version of build-arm-eabi earlier than changeset
-9dcb1268885e (2016-05-07), set PATH so that the new $prefix/bin
-directory comes first, so that the new binutils will be used to build
-newlib. If using newer versions, this is done in the scripts.
+(9) if using a version of build-arm-eabi earlier than 2016-05-07, set
+PATH so that the new $prefix/bin directory comes first, so that the
+new binutils will be used to build newlib. If using newer versions,
+this is done in the scripts.
 
-(10) in newlib/, call $build/configure-newlib.sh.
+(10) in newlib/, call $build/newlib.sh.
 
-(11) in gcc/, call $build/configure-gcc.sh (it's best not to do this
+(11) in gcc/, call $build/gcc.sh (it's best not to do this
 in the gcc-boot/ directory, at least if you don't wipe it first).
 
-(12) in gdb/, call $build/configure-gdb.sh.
+(12) in gdb/, call $build/gdb.sh.
 
 The new compiler is now installed in $prefix.
