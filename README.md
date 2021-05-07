@@ -4,7 +4,7 @@ This set of scripts supports building GCC Ada, or GNAT, on macOS as a cross-comp
 
 The macOS-specific parts are:
 
-* in `common.sh`, `BUILD=x86_64-apple-darwinNN` and `GCC_STAGE1_FLAGS`
+* in `common.sh`, `BUILD=x86_64-apple-darwinNN` and `GCC_STAGE1_LDFLAGS`
 
 The first prerequisite is to have a native Ada compiler, and its suitably-patched source code, for the GCC release you are building the cross-compiler for.
 
