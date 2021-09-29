@@ -26,7 +26,6 @@ $GCC_PATH/configure                                     \
  --with-gnu-ld                                          \
  --with-libgloss                                        \
  --with-newlib                                          \
- --with-stage1-ldflags="$GCC_STAGE1_LDFLAGS"            \
  --with-system-zlib                                     \
  --without-libiconv-prefix                              \
  $MULTILIB_LIST

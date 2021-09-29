@@ -4,7 +4,7 @@ This set of scripts supports building GCC Ada, or GNAT, on macOS as a cross-comp
 
 The macOS-specific parts are:
 
-* in `common.sh`, `BUILD=x86_64-apple-darwinNN` and `GCC_STAGE1_LDFLAGS`
+* in `common.sh`, `BUILD=x86_64-apple-darwinNN`
 
 The first prerequisite is to have a native Ada compiler, and its suitably-patched source code, for the GCC release you are building the cross-compiler for.
 
@@ -22,7 +22,7 @@ Next, you need the following sources (for the ones marked [G], the GNAT GPL sour
 
 * [G] the GNU debugger (`binutils-gdb`, or `gdb-M.N`).
 
-These directions are written for macOS, using the default branch of the `building-arm-eabi` Github repository (which is set up for the latest FSF GCC release), assumed hereafter to be in directory `$build`.
+These directions are written for macOS, using the default branch of the `building-gcc-macos-arm-eabi` Github repository (which is set up for the latest FSF GCC release), assumed hereafter to be in directory `$build`.
 
 (1) Unpack all the sources.
 
@@ -40,7 +40,7 @@ These directions are written for macOS, using the default branch of the `buildin
 
 (8) In `gcc-boot/`, call `$build/gcc-boot.sh`. This builds a C compiler capable of building newlib.
 
-(9) If using a version of build-arm-eabi earlier than 2016-05-07, set PATH so that the new $prefix/bin directory comes first, so that the new binutils will be used to build newlib. If using newer versions, this is done in the scripts.
+(9) If using a version of building-gcc-macos-arm-eabi earlier than 2016-05-07, set PATH so that the new $prefix/bin directory comes first, so that the new binutils will be used to build newlib. If using newer versions, this is done in the scripts.
 
 (10) In `newlib/`, call `$build/newlib.sh`.
 

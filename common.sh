@@ -6,10 +6,10 @@
 # source tree already had these versions installed via
 # contrib/download_prerequisites.
 
-VERSION=11.1.0
+VERSION=11.2.0
 PATH=/opt/gcc-$VERSION/bin:$PATH
 TOP=/Volumes/Miscellaneous1
-PREFIX=$TOP/arm/gcc-11.1.0
+PREFIX=$TOP/arm/gcc-11.2.0
 BUILD=x86_64-apple-darwin15
 
 SRC_PATH=$TOP/src
@@ -17,8 +17,6 @@ BINUTILS_PATH=$SRC_PATH/binutils-2.36.1
 GCC_PATH=$SRC_PATH/gcc-$VERSION
 NEWLIB_PATH=$SRC_PATH/newlib-4.1.0
 GDB_PATH=$SRC_PATH/gdb-10.2
-
-GCC_STAGE1_LDFLAGS="-static-libstdc++ -static-libgcc -Wl,-headerpad_max_install_names"
 
 # This is present in GCC 7; it says
 #                                            It should not be used in
