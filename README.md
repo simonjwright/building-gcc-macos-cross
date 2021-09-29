@@ -40,7 +40,7 @@ These directions are written for macOS, using the default branch of the `buildin
 
 (8) In `gcc-boot/`, call `$build/gcc-boot.sh`. This builds a C compiler capable of building newlib.
 
-(9) If using a version of building-gcc-macos-arm-eabi earlier than 2016-05-07, set PATH so that the new $prefix/bin directory comes first, so that the new binutils will be used to build newlib. If using newer versions, this is done in the scripts.
+(9) If using a version of `building-gcc-macos-arm-eabi` earlier than 2016-05-07, set PATH so that the new $prefix/bin directory comes first, so that the new binutils will be used to build newlib. If using newer versions, this is done in the scripts.
 
 (10) In `newlib/`, call `$build/newlib.sh`.
 
