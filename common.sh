@@ -6,10 +6,10 @@
 # source tree already had these versions installed via
 # contrib/download_prerequisites.
 
-VERSION=12.1.0
+VERSION=12.2.0
 PATH=/opt/gcc-$VERSION/bin:$PATH
 TOP=/Volumes/Miscellaneous1
-PREFIX=$TOP/arm/gcc-12.1.0
+PREFIX=$TOP/arm/gcc-$VERSION
 BUILD=x86_64-apple-darwin15
 
 SRC_PATH=$TOP/src
