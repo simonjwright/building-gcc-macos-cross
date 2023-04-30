@@ -1,22 +1,20 @@
-This is GCC 12.2.0, rebuilt as a cross-compiler from macOS to arm-eabi, on Mac OS X El Capitan (10.11, Darwin 15), with Xcode 8.2.1 and Python 3.9.8.
+This is GCC 13.1.0, rebuilt as a cross-compiler from macOS to arm-eabi, on Intel macOS Monterey (12, Darwin 21), with Command Line Tools 14.2 and Python 3.9.13.
 
 Tested with the Cortex-M3 as found on the [Arduino Due][ARDUINO], the Cortex-M4 as found on the [STMicroelectronics][STM] STM32F4 Discovery and STM32F429I Discovery boards and the Cortex-M0 as found in the nRF51 used in the [BBC micro:bit][BBC]; but note that GCC has implemented multilib support for other ARM chips.
 
 Other software included:
 
-  * binutils-2.36.1
-  * newlib-4.1.0
+  * binutils-2.40
+  * newlib-4.3.0
   * binutils-gdb at tag `gdb-12.1-release` with a [minor patch](#python-patch).
 
 The compiler comes with no Ada Runtime System (RTS). See the [Cortex GNAT Run Time Systems project][CORTEX-GNAT-RTS] for candidates.
 
-NOTE: the compiler/RTS interface has changed; Cortex GNAT RTS needs to be built with `RELEASE=gcc12` (this is *not* the default).
-
-The compiler is known to run on El Capitan and Monterey; it's expected to run also on releases between.
+NOTE: Cortex GNAT RTS needs to be built with `RELEASE=gcc12`.
 
 The compiler was built with
 ```
---build=x86_64-apple-darwin15
+--build=x86_64-apple-darwin21
 --disable-libada
 --disable-libcc1
 --disable-libcilkrts
@@ -33,7 +31,7 @@ The compiler was built with
 --disable-threads
 --disable-tls
 --enable-languages=c,c++,ada
---prefix=/Volumes/Miscellaneous1/arm/gcc-12.2.0
+--prefix=/Volumes/Miscellaneous3/arm/gcc-13.1.0
 --target=arm-eabi
 --with-gnu-as
 --with-gnu-ld
@@ -61,7 +59,7 @@ Download the binary `.pkg`. It's not signed, so **don't** double-click on it; in
 
 Notes
 =====
-The software was built using the [building-gcc-macos-arm-eabi][BUILDING] scripts at Github, tag gcc-12.2.0.
+The software was built using the [building-gcc-macos-arm-eabi][BUILDING] scripts at Github, tag gcc-13.1.0.
 
 The <a name="python-patch">minor Python-related patch</a> referred to above is
 ```

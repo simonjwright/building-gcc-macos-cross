@@ -6,16 +6,16 @@
 # source tree already had these versions installed via
 # contrib/download_prerequisites.
 
-VERSION=12.2.0
+VERSION=13.1.0
 PATH=/opt/gcc-$VERSION/bin:$PATH
-TOP=/Volumes/Miscellaneous1
+TOP=/Volumes/Miscellaneous3
 PREFIX=$TOP/arm/gcc-$VERSION
-BUILD=x86_64-apple-darwin15
+BUILD=x86_64-apple-darwin21
 
 SRC_PATH=$TOP/src
-BINUTILS_PATH=$SRC_PATH/binutils-2.36.1
+BINUTILS_PATH=$SRC_PATH/binutils-2.40
 GCC_PATH=$SRC_PATH/gcc-$VERSION
-NEWLIB_PATH=$SRC_PATH/newlib-4.1.0
+NEWLIB_PATH=$SRC_PATH/newlib-4.3.0.20230120
 GDB_PATH=$SRC_PATH/binutils-gdb
 
 # This is present in GCC 7; it says
