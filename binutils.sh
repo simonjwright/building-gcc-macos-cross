@@ -10,7 +10,8 @@ $BINUTILS_PATH/configure                        \
  --prefix=$PREFIX                               \
  --disable-nls                                  \
  --disable-werror                               \
- --enable-interwork
+ --enable-interwork                             \
+ --without-zstd
 
 make -w -j3
 

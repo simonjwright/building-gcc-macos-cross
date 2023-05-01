@@ -59,7 +59,7 @@ Download the binary `.pkg`. It's not signed, so **don't** double-click on it; in
 
 Notes
 =====
-The software was built using the [building-gcc-macos-arm-eabi][BUILDING] scripts at Github, tag gcc-13.1.0.
+The software was built using the [building-gcc-macos-arm-eabi][BUILDING] scripts at Github, tag gcc-13.1.0-1.
 
 The <a name="python-patch">minor Python-related patch</a> referred to above is
 ```
