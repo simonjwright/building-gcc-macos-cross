@@ -1,4 +1,4 @@
-This is GCC 13.1.0, rebuilt as a cross-compiler from macOS to arm-eabi, on Intel macOS Monterey (12, Darwin 21), with Command Line Tools 14.2 and Python 3.9.13.
+This is GCC 13.1.0, rebuilt as a cross-compiler from macOS to arm-eabi, on macOS Ventura (13, Darwin 22), for Apple silicon (M1), with Command Line Utilities 14.2.0 and Python 3.9.13.
 
 Tested with the Cortex-M3 as found on the [Arduino Due][ARDUINO], the Cortex-M4 as found on the [STMicroelectronics][STM] STM32F4 Discovery and STM32F429I Discovery boards and the Cortex-M0 as found in the nRF51 used in the [BBC micro:bit][BBC]; but note that GCC has implemented multilib support for other ARM chips.
 
@@ -59,7 +59,7 @@ Download the binary `.pkg`. It's not signed, so **don't** double-click on it; in
 
 Notes
 =====
-The software was built using the [building-gcc-macos-arm-eabi][BUILDING] scripts at Github, tag gcc-13.1.0-1.
+The software was built using the [building-gcc-macos-arm-eabi][BUILDING] scripts at Github, tag gcc-13.1.0-aarch64.
 
 The <a name="python-patch">minor Python-related patch</a> referred to above is
 ```

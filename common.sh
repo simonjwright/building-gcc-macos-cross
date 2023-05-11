@@ -7,14 +7,14 @@
 # contrib/download_prerequisites.
 
 VERSION=13.1.0
-PATH=/opt/gcc-$VERSION/bin:$PATH
+PATH=/opt/gcc-$VERSION-aarch64/bin:$PATH
 TOP=/Volumes/Miscellaneous3
-PREFIX=$TOP/arm/gcc-$VERSION
-BUILD=x86_64-apple-darwin21
+PREFIX=$TOP/arm/gcc-$VERSION-aarch64
+BUILD=aarch64-apple-darwin21
 
 SRC_PATH=$TOP/src
 BINUTILS_PATH=$SRC_PATH/binutils-2.40
-GCC_PATH=$SRC_PATH/gcc-$VERSION
+GCC_PATH=$SRC_PATH/gcc-13-branch
 NEWLIB_PATH=$SRC_PATH/newlib-4.3.0.20230120
 GDB_PATH=$SRC_PATH/binutils-gdb
 
