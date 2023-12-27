@@ -11,9 +11,11 @@ $GDB_PATH/configure                             \
  --target=arm-eabi                              \
  --prefix=$PREFIX                               \
  --with-python=python3                          \
+ --with-mpfr=$PREFIX                            \
+ --without-zstd                                 \
  --disable-werror
 
-make -w all -j3
+ make -w all -j7
 
 cd gdb
 make install

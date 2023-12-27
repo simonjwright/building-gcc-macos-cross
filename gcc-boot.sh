@@ -33,8 +33,9 @@ $GCC_PATH/configure                             \
  --with-system-zlib                             \
  --without-headers                              \
  --without-libiconv-prefix                      \
+ --enable-host-pie                              \
  $MULTILIB_LIST
 
-make -w -j3 all-gcc
+make -w -j7 all-gcc
 
 make -w install-gcc

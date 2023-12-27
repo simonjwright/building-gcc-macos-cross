@@ -15,6 +15,6 @@ $NEWLIB_PATH/configure                          \
  --disable-nls                                  \
  --disable-newlib-supplied-syscalls
 
-make CFLAGS_FOR_TARGET='-g -O2 -ffunction-sections -fdata-sections' -w -j3 all
+make CFLAGS_FOR_TARGET='-g -O2 -ffunction-sections -fdata-sections' -w -j7 all
 
 make -w install

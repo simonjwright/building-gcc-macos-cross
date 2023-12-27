@@ -6,7 +6,7 @@
 # source tree already had these versions installed via
 # contrib/download_prerequisites.
 
-VERSION=13.1.0
+VERSION=13.2.0
 PATH=/opt/gcc-$VERSION-aarch64/bin:$PATH
 TOP=/Volumes/Miscellaneous3
 PREFIX=$TOP/arm/gcc-$VERSION-aarch64
@@ -16,7 +16,7 @@ SRC_PATH=$TOP/src
 BINUTILS_PATH=$SRC_PATH/binutils-2.40
 GCC_PATH=$SRC_PATH/gcc-13-branch
 NEWLIB_PATH=$SRC_PATH/newlib-4.3.0.20230120
-GDB_PATH=$SRC_PATH/binutils-gdb
+GDB_PATH=$SRC_PATH/gdb-14.1
 
 # This is present in GCC 7; it says
 #                                            It should not be used in

@@ -1,4 +1,8 @@
-This is GCC 13.1.0, rebuilt as a cross-compiler from macOS to arm-eabi, on macOS Ventura (13, Darwin 22), for Apple silicon (M1), with Command Line Utilities 14.2.0 and Python 3.9.13.
+This is GCC 13.2.0,
+* rebuilt as a cross-compiler from macOS to arm-eabi,
+* on macOS Sonoma (14, Darwin 23) but compatible with Monterey,
+* for Apple silicon (M1),
+* with Command Line Utilities 14.2.0 and Python 3.9.13.
 
 Tested with the Cortex-M3 as found on the [Arduino Due][ARDUINO], the Cortex-M4 as found on the [STMicroelectronics][STM] STM32F4 Discovery and STM32F429I Discovery boards and the Cortex-M0 as found in the nRF51 used in the [BBC micro:bit][BBC]; but note that GCC has implemented multilib support for other ARM chips.
 
@@ -6,7 +10,7 @@ Other software included:
 
   * binutils-2.40
   * newlib-4.3.0
-  * binutils-gdb at tag `gdb-12.1-release` with a [minor patch](#python-patch).
+  * gdb-14.1
 
 The compiler comes with no Ada Runtime System (RTS). See the [Cortex GNAT Run Time Systems project][CORTEX-GNAT-RTS] for candidates.
 
@@ -14,7 +18,7 @@ NOTE: Cortex GNAT RTS needs to be built with `RELEASE=gcc12`.
 
 The compiler was built with
 ```
---build=x86_64-apple-darwin21
+--build=aarch64-apple-darwin21
 --disable-libada
 --disable-libcc1
 --disable-libcilkrts
@@ -31,7 +35,7 @@ The compiler was built with
 --disable-threads
 --disable-tls
 --enable-languages=c,c++,ada
---prefix=/Volumes/Miscellaneous3/arm/gcc-13.1.0
+--prefix=/Volumes/Miscellaneous3/arm/gcc-13.2.0-aarch64
 --target=arm-eabi
 --with-gnu-as
 --with-gnu-ld
@@ -39,6 +43,7 @@ The compiler was built with
 --with-newlib
 --with-system-zlib
 --without-libiconv-prefix
+--enable-host-pie
 --with-multilib-list=rmprofile
 ```
 
@@ -51,17 +56,14 @@ The `--with-multilib-list` setting supports the following:
    Cortex-M23, Cortex-M33, Cortex-R4, Cortex-R5, Cortex-R7, Cortex-R8
    and Cortex-R52.
 
-## Install ##
-
-One of _Xcode_ or the _Command Line Tools_ is required.
-
-Download the binary `.pkg`. It's not signed, so **don't** double-click on it; instead, right-click on it and _Open_. Accept the warning. You will be guided through the installation.
-
 Notes
 =====
-The software was built using the [building-gcc-macos-arm-eabi][BUILDING] scripts at Github, tag gcc-13.1.0-aarch64.
 
-The <a name="python-patch">minor Python-related patch</a> referred to above is
+The software was built using the [building-gcc-macos-arm-eabi][BUILDING] scripts at Github, tag gcc-13.2.0-aarch64.
+
+Building GDB
+------------
+A minor Python-related patch was required:
 ```
 index 027d80dcc86..3b282d2f56d 100644
 --- a/gdb/python/python-config.py
@@ -76,10 +78,13 @@ index 027d80dcc86..3b282d2f56d 100644
                  libs.extend(getvar("LINKFORSHARED").split())
          print(to_unix_path(" ".join(libs)))
 ```
-The reason is that the `LINKFORSHARED` Python configuration variable is broken on Darwin; this fix effectively detects that we're running on Darwin and doesn't use it.
+The reason is that the `LINKFORSHARED` Python configuration variable is broken on Darwin; this fix effectively detects that we're running on Darwin and doesn't use it. See e.g. [GDB PR29070].
+
+GDB requires MPFR, which used to be available with the host compiler build at the same version. Now, we make a static build of the MPFR whose source was used to build the compiler -- static to avoid problems with runpaths when the built GDB is relocated.
 
 [ARDUINO]: http://www.arduino.com
 [STM]: http://www.st.com
 [BBC]: http://microbit.org
 [CORTEX-GNAT-RTS]: https://github.com/simonjwright/cortex-gnat-rts
-[BUILDING]:https://github.com/simonjwright/building-gcc-macos-arm-eabi
+[BUILDING]: https://github.com/simonjwright/building-gcc-macos-arm-eabi
+[GDB PR29070]: https://sourceware.org/bugzilla/show_bug.cgi?id=29070
