@@ -6,7 +6,7 @@ script_loc=`cd $(dirname $0) && pwd -P`
 
 rm -rf *
 
-$GCC_PATH/mpfr/configure                         \
+$GCC_SRC/mpfr/configure                         \
   --prefix=$PREFIX                              \
   --host=$BUILD                                 \
   --target=$BUILD                               \

@@ -6,17 +6,35 @@
 # source tree already had these versions installed via
 # contrib/download_prerequisites.
 
-VERSION=13.2.0
-PATH=/opt/gcc-$VERSION-aarch64/bin:$PATH
+VERSION=${VERSION:=13.2.0}
+BUILD=$ARCH-apple-darwin21
+
+PYTHON=python3.9
+
+PATH=/opt/gcc-$VERSION-$ARCH/bin:$PATH
+
 TOP=/Volumes/Miscellaneous3
-PREFIX=$TOP/arm/gcc-$VERSION-aarch64
-BUILD=aarch64-apple-darwin21
+
+# This is where the build is built to: there aren't any .dylibs, so it
+# can be just picked up and moved to its destination.
+PREFIX=$TOP/arm/gcc-$VERSION-$ARCH
 
 SRC_PATH=$TOP/src
-BINUTILS_PATH=$SRC_PATH/binutils-2.40
-GCC_PATH=$SRC_PATH/gcc-13-branch
-NEWLIB_PATH=$SRC_PATH/newlib-4.3.0.20230120
-GDB_PATH=$SRC_PATH/gdb-14.1
+
+#  GCC_SRC=$SRC_PATH/gcc-darwin-arm64
+# iains' WIP
+
+GCC_SRC=$SRC_PATH/gcc-14-20240218
+# that's the latest snapshot
+
+# the default version
+GCC_SRC=${GCC_SRC:-$SRC_PATH/gcc-$VERSION}
+
+NEW_PATH=$PREFIX/bin:$PATH
+
+BINUTILS_SRC=$SRC_PATH/binutils-2.40
+NEWLIB_SRC=$SRC_PATH/newlib-4.3.0.20230120
+GDB_SRC=$SRC_PATH/gdb-14.1
 
 # This is present in GCC 7; it says
 #                                            It should not be used in

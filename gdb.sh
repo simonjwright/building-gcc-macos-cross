@@ -4,9 +4,9 @@ script_loc=`cd $(dirname $0) && pwd -P`
 
 . $script_loc/common.sh
 
-PATH=$PREFIX/bin:$PATH
+PATH=$NEW_PATH
 
-$GDB_PATH/configure                             \
+$GDB_SRC/configure                             \
  --build=$BUILD                                 \
  --target=arm-eabi                              \
  --prefix=$PREFIX                               \
