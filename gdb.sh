@@ -6,16 +6,19 @@ script_loc=`cd $(dirname $0) && pwd -P`
 
 PATH=$PREFIX/bin:$PATH
 
-$GDB_PATH/configure                             \
+$GDB_SRC/configure                              \
  --build=$BUILD                                 \
  --target=arm-eabi                              \
  --prefix=$PREFIX                               \
  --with-python=python3                          \
+ --with-gmp=$PREFIX                             \
  --with-mpfr=$PREFIX                            \
  --without-zstd                                 \
- --disable-werror
+ --disable-werror                               \
+ CC=clang                                       \
+ CXX=clang++
 
- make -w all -j7
+make -w all -j$CORES
 
 cd gdb
 make install

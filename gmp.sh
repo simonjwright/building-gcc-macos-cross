@@ -6,13 +6,14 @@ script_loc=`cd $(dirname $0) && pwd -P`
 
 rm -rf *
 
-$GCC_PATH/mpfr/configure                         \
+$GCC_SRC/gmp/configure                          \
   --prefix=$PREFIX                              \
   --host=$BUILD                                 \
   --target=$BUILD                               \
   --build=$BUILD                                \
-  --with-gmp=$PREFIX                            \
-  --disable-shared
+  --enable-cxx                                  \
+  --disable-shared                               \
+  M4=gm4
 
 make -w -j$CORES
 

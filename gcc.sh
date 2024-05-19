@@ -33,7 +33,7 @@ $GCC_PATH/configure                             \
  --enable-host-pie                              \
  $MULTILIB_LIST
 
-make -w -j7
+make -w -j$CORES
 
 make -w -C gcc cross-gnattools ada.all.cross
 

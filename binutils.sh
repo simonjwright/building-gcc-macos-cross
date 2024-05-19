@@ -13,6 +13,6 @@ $BINUTILS_PATH/configure                        \
  --enable-interwork                             \
  --without-zstd
 
-make -w -j7
+make -w -j$CORES
 
 make install

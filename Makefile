@@ -36,9 +36,16 @@ gcc-stamp: newlib-stamp $(location)/common.sh $(location)/gcc.sh
 	mkdir gcc
 	(cd gcc; $(location)/gcc.sh) && touch $@
 
+gmp: gmp-stamp
+.PHONY: gmp
+gmp-stamp: $(location)/common.sh $(location)/gmp.sh
+	rm -rf $@ gmp
+	mkdir gmp
+	(cd gmp; $(location)/gmp.sh) && touch $@
+
 mpfr: mpfr-stamp
 .PHONY: mpfr
-mpfr-stamp: $(location)/common.sh $(location)/mpfr.sh
+mpfr-stamp: gmp-stamp $(location)/common.sh $(location)/mpfr.sh
 	rm -rf $@ mpfr
 	mkdir mpfr
 	(cd mpfr; $(location)/mpfr.sh) && touch $@

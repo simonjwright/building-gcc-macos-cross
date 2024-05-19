@@ -36,6 +36,6 @@ $GCC_PATH/configure                             \
  --enable-host-pie                              \
  $MULTILIB_LIST
 
-make -w -j7 all-gcc
+make -w -j$CORES all-gcc
 
 make -w install-gcc
