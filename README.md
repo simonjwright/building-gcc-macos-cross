@@ -1,16 +1,10 @@
-# Building `arm-eabi` #
+# Building a cross-compiler #
 
-This set of scripts supports building GCC Ada, or GNAT, on macOS as a cross-compiler for the arm-eabi target. It has been put together from various hints around the Web, and from painful experience.
-
-The macOS-specific parts are:
-
-* in `common.sh`, `BUILD=$ARCH-apple-darwinNN`
-
-(`$ARCH` is either `aarch64`, Apple silicon, or `x86_64`).
+This set of scripts supports building GCC Ada, or GNAT, on macOS as a cross-compiler for the arm-eabi or riscv64-elf target. It has been put together from various hints around the Web, and from painful experience.
 
 The first prerequisite is to have a native Ada compiler, and its suitably-patched source code, for the GCC release you are building the cross-compiler for.
 
-Next, you need the following sources (for an FSF GCC build, you should already have appropriate versions of the ones marked C via `contrib/download_prerequisites`):
+Next, you need the following sources (for an FSF GCC build, you should already have appropriate versions of the ones marked C, installed with the native compiler sources via `contrib/download_prerequisites`):
 
 * [C] the GNU Multiprecision library (`gmp`).
 
@@ -24,20 +18,20 @@ Next, you need the following sources (for an FSF GCC build, you should already h
 
 * the GNU debugger (`binutils-gdb`, or `gdb-M.N`).
 
-These directions are written for macOS, using the default branch of the `building-gcc-macos-arm-eabi` Github repository (which is set up for the latest FSF GCC release), assumed hereafter to be in directory `$build`.
+These directions are written for macOS, using the default branch of the `building-gcc-macos-cross` Github repository (which is set up for the latest FSF GCC release), assumed hereafter to be in directory `$builder`.
 
-(1) Unpack all the sources.
+1. Unpack all the sources.
 
-(2) In `$build`, edit common.sh to reflect the locations. If you are happy to install over your native compiler, adjust `PREFIX` to suit (but that may require you to build with root privileges, not normally a good idea).
+1. In `$builder`, edit common.sh to reflect the locations. If you are happy to install over your native compiler, adjust `PREFIX` to suit (but that may require you to build with root privileges, not normally a good idea).
 
-(4) At the top level of the GCC source directory, and if not already done, install the support libraries:
+1. Ensure the native compiler is first on your `PATH`. The default assumes that you're building for Apple silicon (`aarch64`) with an `aarch64` compiler. If you want to build for Intel silicon (`x86_64`), you must be using an `x86_64` compiler and running in an `x86_64` shell; start such a shell by `arch -x86_64 /bin/bash`.
 
-    contrib/download_prerequisites
+1. Create a build directory, e.g. `~/tmp/build-arm`.
 
-(5) Ensure the native compiler is first on your `PATH`.
+1. In this directory, call `make -f $builder/Makefile <options>`. There are several options: the main ones are
+   * VERSION. The default is `14.1.0`, but you could set it to e.g. `14.1.0-1`.
+   * TARGET. The options are
+       * `arm-eabi` (default)
+       * `riscv*-elf` (preferably `riscv64-elf`: `*` can be blank, `32`, or `64`; all result in basically the same compiler, but `64` is usual.
 
-(6) Create a build directory, e.g. `~/tmp/build-arm`.
-
-(7) In this directory, call `make -f $build/Makefile`.
-
-The new compiler is now installed in `$prefix`.
+The new compiler is now installed in `$PREFIX` (see `common.sh`).

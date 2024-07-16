@@ -6,6 +6,32 @@
 location := $(shell echo $(dir $(abspath $(lastword $(MAKEFILE_LIST)))) \
 	| sed -e "s;/$$;;")
 
+# what architecture are we running? (will get arm64 or i386)
+current_arch = $(shell arch)
+
+# what architecture was the compiler built for?
+aarch64 = $(findstring aarch64, $(shell gcc -print-libgcc-file-name))
+x86_64  = $(findstring x86_64,  $(shell gcc -print-libgcc-file-name))
+
+# check that the compiler matches the architecture
+ifeq ($(current_arch),arm64)
+  ifeq ($(aarch64),)
+    $(error shell is aarch64 but current gcc is not)
+  else
+    export ARCH=aarch64
+  endif
+else
+  ifeq ($(current_arch),i386)
+    ifeq ($(x86_64),)
+      $(error shell is x86_64 but current gcc is not)
+    else
+      export ARCH=x86_64
+    endif
+  else
+    $(error unexpected architecure $(current_arch), expecting i386)
+  endif
+endif
+
 all: gcc gdb
 
 binutils: binutils-stamp

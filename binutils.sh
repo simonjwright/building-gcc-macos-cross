@@ -4,9 +4,9 @@ script_loc=`cd $(dirname $0) && pwd -P`
 
 . $script_loc/common.sh
 
-$BINUTILS_PATH/configure                        \
+$BINUTILS_SRC/configure                         \
  --build=$BUILD                                 \
- --target=arm-eabi                              \
+ --target=$TARGET                               \
  --prefix=$PREFIX                               \
  --disable-nls                                  \
  --disable-werror                               \

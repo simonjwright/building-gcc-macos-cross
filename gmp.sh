@@ -7,13 +7,13 @@ script_loc=`cd $(dirname $0) && pwd -P`
 rm -rf *
 
 $GCC_SRC/gmp/configure                          \
-  --prefix=$PREFIX                              \
-  --host=$BUILD                                 \
-  --target=$BUILD                               \
-  --build=$BUILD                                \
-  --enable-cxx                                  \
-  --disable-shared                               \
-  M4=gm4
+    --prefix=$PREFIX                            \
+    --host=$BUILD                               \
+    --target=$BUILD                             \
+    --build=$BUILD                              \
+    --enable-cxx                                \
+    --disable-shared                            \
+    M4=gm4
 
 make -w -j$CORES
 
