@@ -1,0 +1,45 @@
+Only in binutils-2.43.1-xh3irq/include/opcode: #riscv-opc.h
+diff -ur binutils-2.43.1/include/opcode/riscv-opc.h binutils-2.43.1-xh3irq/include/opcode/riscv-opc.h
+--- binutils-2.43.1/include/opcode/riscv-opc.h	2024-08-17 00:00:00
++++ binutils-2.43.1-xh3irq/include/opcode/riscv-opc.h	2024-09-04 17:11:04
+@@ -3713,6 +3713,16 @@
+ #define CSR_VL 0xc20
+ #define CSR_VTYPE 0xc21
+ #define CSR_VLENB 0xc22
++
++/* RP2350 Xh3irq: Hazard interrupt controller */
++
++#define CSR_MEIEA 0xbe0
++#define CSR_MEIPA 0xbe1
++#define CSR_MEIFA 0xbe2
++#define CSR_MEIPRA 0xbe3
++#define CSR_MEINEXT 0xbe4
++#define CSR_MEICONTEXT 0xbe5
++
+ #endif /* RISCV_ENCODING_H */
+ #ifdef DECLARE_INSN
+ DECLARE_INSN(slli_rv32, MATCH_SLLI_RV32, MASK_SLLI_RV32)
+@@ -4820,6 +4830,22 @@
+ DECLARE_CSR(vl, CSR_VL, CSR_CLASS_V, PRIV_SPEC_CLASS_NONE, PRIV_SPEC_CLASS_NONE)
+ DECLARE_CSR(vtype, CSR_VTYPE, CSR_CLASS_V, PRIV_SPEC_CLASS_NONE, PRIV_SPEC_CLASS_NONE)
+ DECLARE_CSR(vlenb, CSR_VLENB, CSR_CLASS_V, PRIV_SPEC_CLASS_NONE, PRIV_SPEC_CLASS_NONE)
++
++/* RP2350 Xh3irq: Hazard interrupt controller */
++
++// #define CSR_MEIEA 0xbe0
++DECLARE_CSR(meiea, CSR_MEIEA, CSR_CLASS_I, PRIV_SPEC_CLASS_NONE, PRIV_SPEC_CLASS_NONE)
++// #define CSR_MEIPA 0xbe1
++DECLARE_CSR(meipa, CSR_MEIPA, CSR_CLASS_I, PRIV_SPEC_CLASS_NONE, PRIV_SPEC_CLASS_NONE)
++// #define CSR_MEIFA 0xbe2
++DECLARE_CSR(meifa, CSR_MEIFA, CSR_CLASS_I, PRIV_SPEC_CLASS_NONE, PRIV_SPEC_CLASS_NONE)
++// #define CSR_MEIPRA 0xbe3
++DECLARE_CSR(meipra, CSR_MEIPRA, CSR_CLASS_I, PRIV_SPEC_CLASS_NONE, PRIV_SPEC_CLASS_NONE)
++// #define CSR_MEINEXT 0xbe4
++DECLARE_CSR(meinext, CSR_MEINEXT, CSR_CLASS_I, PRIV_SPEC_CLASS_NONE, PRIV_SPEC_CLASS_NONE)
++// #define CSR_MEICONTEXT 0xbe5
++DECLARE_CSR(meicontext, CSR_MEICONTEXT, CSR_CLASS_I, PRIV_SPEC_CLASS_NONE, PRIV_SPEC_CLASS_NONE)
++
+ #endif /* DECLARE_CSR */
+ #ifdef DECLARE_CSR_ALIAS
+ DECLARE_CSR_ALIAS(dscratch, CSR_DSCRATCH0, CSR_CLASS_DEBUG, PRIV_SPEC_CLASS_NONE, PRIV_SPEC_CLASS_NONE)
+Only in binutils-2.43.1-xh3irq/include/opcode: riscv-opc.h~

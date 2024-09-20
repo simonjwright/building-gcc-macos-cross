@@ -1,4 +1,4 @@
-# This contains variable declarations for the components to be used
+=# This contains variable declarations for the components to be used
 # for this build.
 
 # TARGET can be arm-eabi (default) or riscv-elf.
@@ -32,7 +32,7 @@ SRC_PATH=$TOP/src
 # GCC_SRC=$SRC_PATH/gcc-13-branch
 
 # Building gcc-14 for aarch64; the actual tag in that clone is
-# gcc-14.1-darwin-r1.
+# gcc-14.2-darwin-r1.
 GCC_SRC=$SRC_PATH/gcc-14-branch
 
 # Building iains's WIP for aarch64
@@ -48,7 +48,15 @@ GCC_SRC=${GCC_SRC:-$SRC_PATH/gcc-$VERSION}
 
 NEW_PATH=$PREFIX/bin:$PATH
 
-BINUTILS_SRC=$SRC_PATH/binutils-2.42
+case $TARGET in
+    arm-eabi)
+        BINUTILS_SRC=$SRC_PATH/binutils-2.43.1
+        ;;
+    riscv*-elf)
+        BINUTILS_SRC=$SRC_PATH/binutils-2.43.1-xh3irq
+        ;;
+esac
+
 NEWLIB_SRC=$SRC_PATH/newlib-4.4.0.20231231
 GDB_SRC=$SRC_PATH/gdb-14.2
 

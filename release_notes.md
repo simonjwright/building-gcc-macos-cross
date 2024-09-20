@@ -7,14 +7,14 @@ These are scripts for building GCC
 
 Other software included:
 
-* binutils-2.42
-* newlib-4.4.0
+* binutils-2.43.1 for arm-eabi, binutils-2.43.1-xh3irq for riscv64-elf
+* newlib-4.4.0.20231231
 * gdb-14.2
 
 Tested with:
 
 * `arm-eabi`, the Cortex-M3 as found on the [Arduino Due][ARDUINO], the Cortex-M4 as found on the [STMicroelectronics][STM] STM32F4 Discovery and STM32F429I Discovery boards and the Cortex-M0 as found in the nRF51 used in the [BBC micro:bit][BBC]; but note that GCC has implemented multilib support for other ARM chips.
-* `riscv64-elf`, the Espressif [ESP32-H2][ESP32-H2]
+* `riscv64-elf`, the Espressif [ESP32-H2][ESP32-H2], the RaspberryPi [Pico 2 with RP2350][Pico 2 with RP2350].
 
 The compiler comes with no Ada Runtime System (RTS). See the [FreeRTOS Ada project][FREERTOS-Ada] for candidates (it needs to be built with `RELEASE=gcc12`).
 
@@ -61,10 +61,16 @@ where
 Notes
 =====
 
-The software was built using the [building-gcc-macos-cross][BUILDING] scripts at Github, tag gcc-14.1.0-1-aarch64.
+The software was built using the [building-gcc-macos-cross][BUILDING] scripts at Github, tag gcc-14.2.0-1-aarch64.
+
+Binutils 2.43.1
+---------------
+
+The RP2350 Risc-V cores support additional external interrupts using an extension "Xh3irq", which uses new CSRs (`meiea`, `meipa`, `meifa`, `meipra`, `meinext`, `meicontext`). For the `riscv64-elf` compiler, these have been patched so that they can be used in machine code insertions.
 
 Building GDB
 ------------
+
 A minor Python-related patch was required:
 ```
 --- gdb/python/python-config.py~	2023-02-02 04:45:52
@@ -85,6 +91,7 @@ GDB requires GMP and MPFR, which used to be available with the host compiler bui
 [STM]: http://www.st.com
 [BBC]: http://microbit.org
 [ESP32-H2]: https://www.espressif.com/sites/default/files/documentation/esp32-h2_datasheet_en.pdf
+[Pico 2 with RP2350]: https://www.raspberrypi.com/products/raspberry-pi-pico-2/
 [FREERTOS-ADA]: https://github.com/simonjwright/freertos-ada
 [BUILDING]: https://github.com/simonjwright/building-gcc-macos-arm-eabi
 [GDB PR29070]: https://sourceware.org/bugzilla/show_bug.cgi?id=29070
