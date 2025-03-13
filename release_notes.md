@@ -51,7 +51,7 @@ $MULTILIB_SWITCH
 
 where
 
-* `$BUILD` is `aarch64-apple-darwin21`.
+* `$BUILD` is `aarch64-apple-darwin23`.
 * `$TARGET` is `arm-eabi` or `riscv64-elf`.
 * `$PREFIX` is part of the build process, to avoid installing untested builds on top of a working compiler.
 * `$MULTILIB_SWITCH` setting is

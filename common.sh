@@ -1,10 +1,10 @@
-=# This contains variable declarations for the components to be used
+# This contains variable declarations for the components to be used
 # for this build.
 
-# TARGET can be arm-eabi (default) or riscv-elf.
+# TARGET can be arm-eabi (default) or riscv{32,64,}-elf.
 
 VERSION=${VERSION:=14.1.0}
-BUILD=$ARCH-apple-darwin21
+BUILD=$ARCH-apple-darwin23
 TARGET=${TARGET:=arm-eabi}
 
 PYTHON=python3.9
@@ -32,7 +32,7 @@ SRC_PATH=$TOP/src
 # GCC_SRC=$SRC_PATH/gcc-13-branch
 
 # Building gcc-14 for aarch64; the actual tag in that clone is
-# gcc-14.2-darwin-r1.
+# gcc-14.2-darwin-r2.
 GCC_SRC=$SRC_PATH/gcc-14-branch
 
 # Building iains's WIP for aarch64
@@ -54,6 +54,9 @@ case $TARGET in
         ;;
     riscv*-elf)
         BINUTILS_SRC=$SRC_PATH/binutils-2.43.1-xh3irq
+        ;;
+    *)
+        echo "unknown target '$TARGET'"
         ;;
 esac
 
