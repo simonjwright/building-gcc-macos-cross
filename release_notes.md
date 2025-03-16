@@ -61,7 +61,7 @@ where
 Notes
 =====
 
-The software was built using the [building-gcc-macos-cross][BUILDING] scripts at Github, tag gcc-14.2.0-1-aarch64.
+The software was built using the [building-gcc-macos-cross][BUILDING] scripts at Github, tag gcc-14.2.0-3-aarch64.
 
 Binutils 2.43.1
 ---------------
